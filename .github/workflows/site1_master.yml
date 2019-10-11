@@ -1,4 +1,4 @@
-name: Greet Everyone
+name: Greet Site1 Master Branch
 # This workflow is triggered on pushes to the repository.
 on:
   push:
