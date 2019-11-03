@@ -8,3 +8,6 @@ RUN sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft
 RUN apt update
 
 RUN apt install -y azure-functions-core-tools
+
+RUN mkdir sample-function-app && cd sample-function-app
+
