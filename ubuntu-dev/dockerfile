@@ -30,5 +30,3 @@ RUN curl -sL https://aka.ms/InstallAzureCLIDeb | bash
 # intall node
 RUN apt install -y nodejs npm
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
-
-ADD app /app
