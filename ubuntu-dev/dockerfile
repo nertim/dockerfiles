@@ -8,7 +8,7 @@ RUN apt clean
 RUN apt update
 RUN apt dist-upgrade -y
 
-RUN apt install software-properties-common
+RUN apt install -y software-properties-common
 
 # install some essentials
 RUN apt install -y curl git wget vim
