@@ -1,4 +1,4 @@
-FROM nertim/ubuntu-dev:latest
+FROM nertim/ubuntu-dev:20200301
 
 # https://docs.microsoft.com/en-us/azure/azure-functions/functions-run-local
 RUN curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
