@@ -1,6 +1,5 @@
 FROM ubuntu
 
-MAINTAINER Mitren Chinoy
 LABEL description="Base ubuntu image with starting blocks"
 
 # update the container
@@ -29,6 +28,7 @@ RUN curl -sL https://aka.ms/InstallAzureCLIDeb | bash
 
 # intall node
 RUN apt install -y nodejs npm
+ENV NODE_VERSION 12.19.0
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
 
 # install LaTeX
