@@ -2,6 +2,11 @@ FROM ubuntu
 
 LABEL description="Base ubuntu image with starting blocks"
 
+# update the container
+RUN apt clean
+RUN apt update
+RUN apt dist-upgrade -y
+
 RUN apt install -y software-properties-common
 
 # install some essentials
