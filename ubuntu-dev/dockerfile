@@ -2,34 +2,35 @@ FROM ubuntu
 
 LABEL description="Base ubuntu image with starting blocks"
 
-# update the container
-RUN apt clean
-RUN apt update
-RUN apt dist-upgrade -y
-
 RUN apt install -y software-properties-common
 
 # install some essentials
 RUN apt install -y curl git wget vim
 
 # install python
-RUN apt install -y python3.8 python3-venv
+RUN apt install -y python3.9 python3-venv
 
 # install dotnet core
-RUN wget -q https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+RUN wget -q https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
 RUN dpkg -i packages-microsoft-prod.deb
 RUN add-apt-repository universe
 RUN apt install -y apt-transport-https
 RUN apt update
-RUN apt install -y dotnet-sdk-3.1
+RUN apt install -y dotnet-sdk-5.0
+RUN apt install -y aspnetcore-runtime-5.0
 
 # install azure cli
 RUN curl -sL https://aka.ms/InstallAzureCLIDeb | bash
 
 # intall node
 RUN apt install -y nodejs npm
-ENV NODE_VERSION 12.19.0
+ENV NODE_VERSION 14.15.1
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
 
 # install LaTeX
 RUN DEBIAN_FRONTEND=noninteractive apt install -y texlive-latex-extra texlive-science texlive-pictures
+
+# update the container
+RUN apt clean
+RUN apt update
+RUN apt dist-upgrade -y
