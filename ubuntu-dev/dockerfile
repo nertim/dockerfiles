@@ -1,21 +1,24 @@
-FROM ubuntu
+FROM ubuntu:latest
 
 LABEL description="Base ubuntu image with starting blocks"
 
 # update the container
+RUN echo "==== Update the container" > logs
 RUN apt clean
 RUN apt update
 RUN apt dist-upgrade -y
-
 RUN apt install -y software-properties-common
 
 # install some essentials
+RUN echo "==== Install essentials - curl git wget vim" >> logs
 RUN apt install -y curl git wget vim
 
 # install python
-RUN apt install -y python3.9 python3-venv
+RUN echo "==== Install Python3.8" >> logs
+RUN apt install -y python3.8 python3-venv
 
-# install dotnet core
+# install dotnet
+RUN echo "==== Install dotnet and aspnetcore" >> logs
 RUN wget -q https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
 RUN dpkg -i packages-microsoft-prod.deb
 RUN add-apt-repository universe
@@ -25,17 +28,21 @@ RUN apt install -y dotnet-sdk-5.0
 RUN apt install -y aspnetcore-runtime-5.0
 
 # install azure cli
+RUN echo "==== Install Azure CLI" >> logs
 RUN curl -sL https://aka.ms/InstallAzureCLIDeb | bash
 
 # intall node
+RUN echo "==== Install Node" >> logs
 RUN apt install -y nodejs npm
 ENV NODE_VERSION 14.15.1
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
 
 # install LaTeX
+RUN echo "==== Install LaTeX" >> logs
 RUN DEBIAN_FRONTEND=noninteractive apt install -y texlive-latex-extra texlive-science texlive-pictures
 
 # update the container
+RUN echo "==== Update the container" >> logs
 RUN apt clean
 RUN apt update
 RUN apt dist-upgrade -y
